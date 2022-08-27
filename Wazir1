@@ -1,0 +1,288 @@
+import os, re, requests, json, bs4, threading, base64, sys, random, time, rich, datetime
+from rich.progress import Progress,SpinnerColumn,BarColumn,TextColumn,TimeElapsedColumn
+from rich.progress import Task
+from rich.progress import Progress
+from rich.progress import DownloadColumn,SpinnerColumn,TransferSpeedColumn
+from rich.progress import track
+from datetime import datetime
+from time import sleep
+from rich.table import Table
+from rich.console import Console as sol
+from bs4 import BeautifulSoup as sop
+from concurrent.futures import ThreadPoolExecutor as tred
+from rich.console import Group as gp
+from rich.markdown import Markdown as mark
+from rich.table import Table as me
+from rich.columns import Columns as col
+from rich.panel import Panel as nel
+from rich import print as cetak
+from rich import pretty
+from rich.text import Text as tekz
+pretty.install()
+ses=requests.Session()
+os.system("clear")
+
+P = "\x1b[0;97m" # Putih
+M = "\x1b[0;91m" # Merah
+H = "\x1b[0;92m" # Hijau
+K = "\x1b[0;93m" # Kuning
+B = "\x1b[0;94m" # Biru
+U = "\x1b[0;95m" # Ungu
+O = "\x1b[0;96m" # Biru Muda
+N = "\033[0m"    # Warna Mati
+o = '\033[1;36m'
+
+Z2 = "[#000000]" # HITAM
+M2 = "[#FF0000]" # MERAH
+M3 = "#FF0000" # MERAH
+H2 = "[#00FF00]" # HIJAU
+H3 = "#00FF00" # HIJAU
+K2 = "[#FFFF00]" # KUNING
+K3 = "#FFFF00" # KUNING
+B2 = "[#00C8FF]" # BIRU
+B3 = "#00C8FF" # BIRU
+U2 = "[#AF00FF]" # UNGU
+U3 = "#AF00FF" # UNGU
+N2 = "[#FF00FF]" # PINK
+N3 = "#FF00FF" # PINK
+O2 = "[#00FFFF]" # BIRU MUDA
+O3 = "#00FFFF" # BIRU MUDA
+P2 = "[#FFFFFF]" # PUTIH
+P3 = "#FFFFFF" # PUTIH
+J2 = "[#FF8F00]" # JINGGA
+J3 = "#FF8F00" # JINGGA
+A2 = "[#AAAAAA]" # ABU-ABU
+warna_warni_biasa=random.choice([H,K,M,O,B,U])
+warna_warni_rich=random.choice([J3,K3,H3,P3,O3,N3,U3,B3,M3])
+warna_warni_rich_cerah=random.choice([J3,K3,H3,O3,N3,U3,B3])
+garis = f" {P}[{warna_warni_biasa}•{P}]"
+
+def clear():
+      os.system("clear")
+
+#LOGIN SC
+user ="hendrian"
+pwas ="setiawan"
+def cek_pw():
+    try:
+        open("kontol.txt", "r").read()
+    except FileNotFoundError:
+        os.system("clear")
+        banner()
+        print("")
+        jalan('pilih nomer 2 jika ada yang memperjual\nbelikan, sc ini gratis')
+        print("")
+        jalan('1.login')
+        jalan('2.report')
+        pil = input('\n>> pilih    : ')
+        print("")
+        if pil =="":
+            jalan(f"pilih yang benar!");time.sleep(1);cek_pw()
+        elif pil in["2","02"]:
+            jalan("\nYou will be redirected to the Author Whatsapp..."%(N,H,N,H));time.sleep(0.02)
+            os.system('xdg-open https://wa.me/601160610812?text=Hallo+izin+menggunakan+SC+ini');time.sleep(2);cek_pw()
+        elif pil in["1","01"]:
+            jalan('if you have username and password\ncontinue with this tool!')
+            print("")
+        else:
+            exit(f"sorry this is wrong!")
+        #print("You must have a username & password to continue with this tool!")
+        jalan("1.enter username")
+        pw = input(">> username : ")
+        if pw in [""]:
+            jalan("sorry don't be blank!");time.sleep(1);cek_pw()
+        elif pw in user:
+            jalan("ok username is correct");time.sleep(1);kska()
+        else:
+            jalan("Sorry, wrong username");time.sleep(1);cek_pw()
+    menu()
+def kska():
+    print("")
+    jalan("2.enter password")
+    xx = input(">> password : ")
+    if xx in[""]:
+        jalan("sorry don't be blank!");time.sleep(1);cek_pw()
+    elif xx in pwas:
+        jalan("ok password is correct");time.sleep(2);open("kontol.txt", "a");clear();menu()
+    else:
+        jalan("sorry, wrong password");time.sleep(1);cek_pw()
+
+def jalan(xnxx):
+        for ewe in xnxx + '\n':
+                sys.stdout.write(ewe);sys.stdout.flush();sleep(0.03)
+
+def gas(xnxx):
+        for ewe in xnxx + '\n':
+                sys.stdout.write(ewe);sys.stdout.flush();sleep(0.03)
+
+def banner():
+  jalan('''dark tools indonesia
+''')
+def menu():
+        banner()
+        print("")
+        gas(f"1.login with cookie\n2.bot share\n3.bot coment\n4.delete cookie and exit")
+        print("")
+        ask = input(">> select  : ")
+        if ask in["1"]:
+                login()
+        elif ask in["2"]:
+                share()
+        elif ask in["3"]:
+                bot_komen()
+        elif ask in["4"]:
+                delete()
+        else:
+            print("")
+            jalan("wrong input")
+            time.sleep(0.10)
+            os.system("clear")
+            menu()
+
+def delete():
+         os.system("rm -rf cookie.txt")
+         os.system("rm -rf token.txt")
+         os.system("clear")
+         menu()
+
+def bot_komen():
+        token = open("token.txt","r").read()
+        cok = open("cookie.txt","r").read()
+        cookie = {"cookie":cok}
+        print("")
+        jalan(f"1.bot comments random\n2.bot comments manual")
+        print("")
+        ask = input(">> select  : ")
+        if ask in["1"]:
+              bot_komen_kata_random()
+        elif ask in["2"]:
+               print("")
+               jalan("coming soon")
+               os.system("clear")
+               menu()
+        else:
+            os.system("clear")
+            menu()
+
+
+def bot_komen_kata_random():
+	cookie = open('cookie.txt', 'r').read()
+	token = open('token.txt', 'r').read()
+	coki = {"cookie":cookie}
+	print("")
+	jalan("1.masukan id")
+	idx = input(f">> target  : ")
+	cek = requests.get("https://graph.facebook.com/"+idx+"?access_token="+token,cookies=coki).json()
+	if 'name' not in cek:
+		exit(f"{garis}"+cek['error']['message'])
+	else:
+		print("")
+		jalan("2.masukan limit")
+		lim = input(f">> limit   : ")
+		print("")
+		jalan(f">> tunggu sebentar")
+		print("")
+		post = requests.get("https://graph.facebook.com/"+cek['id']+"?fields=feed.limit("+lim+")&access_token="+token,cookies=coki).json()
+		if 'error' in post:
+			exit(garis + post['error']['message'])
+		elif 'feed' not in post:
+			exit(f">> tidak ada postingan!")
+		else:
+			for i in post['feed']['data']:
+				komen = random.choice(['Semangat Bang','Keren Bang','Gokil Suhu','Panutanku','Semangat Terus'])
+				#texs = random.choice(['"Kamu laiknya karya seni. Tidak semua orang akan mengerti dirimu, tetapi orang-orang yang mengerti, tidak akan pernah melupakanmu."','"Orang yang tak pernah membuat kesalahan adalah orang yang tidak pernah berbuat apa-apa." - Norman Edwin','"Belajarlah dari kesalahan orang lain. Anda tak dapat hidup cukup lama untuk melakukan semua kesalahan itu sendiri." - Martin Vanbee','"Belajar memang melelahkan, namun akan lebih melelahkan lagi bila saat ini kamu tidak belajar."','"Diam adalah lebih baik daripada mengucapkan kata-kata yang tanpa makna." - Pythagoraz','"Jika Anda takut gagal, Anda tidak pantas untuk sukses!" - Charles Barkley','"Ingin menjadi orang lain adalah tindakan untuk menyia-nyiakan dirimu sendiri." - Kurt Cobain','"Jika kamu mencari satu orang yang akan mengubah hidupmu, lihatlah di cermin."','"Terkadang kita diuji bukan untuk menunjukkan kelemahan kita, tetapi untuk menemukan kekuatan kita."','Jangan pernah menyerah ketika kamu masih mampu berusaha lagi. Tidak ada kata berakhir sampai kamu berhenti mencoba','"Belajar bukan hanya mengetahui apa yang harus dilakukan, tapi melakukan apa yang sudah kita ketahui."','"Sukses adalah sebuah perjalanan, bukan sebuah tujuan. Usaha sering lebih penting daripada hasilnya."','"Kegagalan adalah kunci kesuksesan. Setiap kesalahan mengajarkan kita sesuatu."','"Kamu tidak bisa menyenangkan semua orang, dan kamu tidak bisa membuat semua orang menyukaimu," Katie Couric.','"Lakukan satu hal setiap hari yang membuatmu takut," Eleanor Roosevelt.','"Ingat, tidak ada yang bisa membuat Anda merasa rendah diri tanpa persetujuan Anda," Eleanor Roosevelt.','"Jika Anda menginginkan pelangi, Anda harus tahan dengan hujan," Dolly Parton.','"Hidup bukanlah tentang menemukan diri Anda sendiri. Hidup adalah tentang menciptakan diri Anda sendiri," George Bernard Shaw.','"Semua impian kita bisa menjadi kenyataan jika kita memiliki keberanian untuk mengejarnya," Walt Disney.','"Seseorang yang luar biasa itu sederhana dalam ucapannya, tetapi hebat dalam tindakannya."','" Jangan menjelaskan tentang dirimu kepada siapa pun, karena yang menyukaimu tidak butuh itu. Dan yang membencimu tidak percaya itu."','" Untuk mendapatkan apa yang diinginkan, kau harus bersabar dengan apa yang kau benci."','Balas dendam terbaik adalah menjadikan dirimu lebih baik."','"Jangan takut akan perubahan. Kita mungkin kehilangan sesuatu yang baik, namun kita akan peroleh sesuatu yang lebih baik lagi."','" Jika diammu bijak, maka diamlah. Apabila diammu diinjak, maka bicaralah supaya tak ada lagi orang yang menginjak dan meremehkan dirimu."','"Kegagalan dibuat hanya oleh mereka yang gagal untuk berani, bukan oleh mereka yang berani gagal."','"Janganlah pernah menyerah ketika kamu masih mampu berusaha lagi. Tidak ada kata berakhir sampai kamu berhenti mencoba." - Brian Dyson','"Lakukan apa yang harus kamu lakukan sampai kamu dapat melakukan apa yang ingin kamu lakukan." - Oprah Winfrey'])
+				kom = ('komentar ini ditulis oleh bot')
+				waktu = str(datetime.datetime.now().strftime('%H:%M:%S'))
+				_hari_   = {'Sunday':'Minggu','Monday':'Senin','Tuesday':'Selasa','Wednesday':'Rabu','Thursday':'Kamis','Friday':'Jumat','Saturday':'Sabtu'}[str(datetime.datetime.now().strftime("%A"))]
+				submit = requests.post("https://graph.facebook.com/"+i['id']+"/comments?message=" + komen + "\n\n" + kom + "\n[ Pukul "+ waktu + " WIB ] "+ "\n- "+ _hari_ + ", "+ sekarang + " -" + "&access_token="+token,cookies=coki).json()
+				if 'id' in submit:
+					print(f">> succes  : "+submit['id'])
+				else:
+					print(f">> failed  : "+i['id'])
+			else:
+				print("")
+				jalan(f">> selesaii ")
+				print("")
+				jalan(f"1.ulang\n2.tidak")
+				print("")
+				ask = input(">> select  : ")
+				if ask in["1"]:
+					  os.system("clear")
+					  menu()
+				elif ask in["2"]:
+					  exit()
+				os.system("clear")
+
+def login():
+        wel='# input cookies'
+        cik2=mark(wel ,style='red')
+        sol().print(cik2)
+        cookie = input("ᄂ please enter cookies : ")
+        try:
+                data = ses.get("https://business.facebook.com/business_locations", headers = {"user-agent": "Mozilla/5.0 (Linux; Android 8.1.0; MI 8 Build/OPM1.171019.011) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.86 Mobile Safari/537.36","referer": "https://www.facebook.com/","host": "business.facebook.com","origin": "https://business.facebook.com","upgrade-insecure-requests" : "1","accept-language": "id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7","cache-control": "max-age=0","accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8","content-type":"text/html; charset=utf-8"}, cookies = {"cookie":cookie})
+                find_token = re.search("(EAAG\w+)", data.text)
+                open("token.txt", "w").write(find_token.group(1))
+                open("cookie.txt", "w").write(cookie)
+                os.system("clear")
+                menu()
+        except:
+                os.system("rm token.txt cookie.txt")
+                exit("login gagal cookie invalid/mati")
+
+def ulang():
+      print(f"ulangi ?")
+      print(f"1.ulangi\n2.tidak")
+      print("")
+      ask = input(">> select  :")
+      if ask in["1"]:
+             share()
+      elif ask in["2"]:
+             exit()
+
+def share():
+        try:
+                token = open("token.txt","r").read()
+                cok = open("cookie.txt","r").read()
+                cookie = {"cookie":cok}
+                nama = ses.get(f"https://graph.facebook.com/me?fields=name&access_token={token}",cookies=cookie).json()["name"]
+        except:
+                login()
+        print("")
+        jalan("1.masukan link")
+        uid = input(">> link    : ")
+        print("")
+        jalan("2.masukan limit")
+        limit = int(input(">> limit   : "))
+        print("")
+        jalan("3.masukan delay")
+        delay = int(input(">> delay   : "))
+        print("")
+        jalan("4.prosess share")
+        try:
+            stt = 0
+            header = {"authority":"m.facebook.com",
+                      "cache-control":"max-age=0",
+                      "port":"443",
+                      "sec-ch-ua-mobile":"?1",
+                      'sec-ch-ua': '"Chromium";v="92", " Not A;Brand";v="99", "Google Chrome";v="92"',
+                      "user-agent":"Mozilla/5.0 (Linux; Android 9; CPH1923) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.40 Mobile Safari/537.36",
+                      "upgrade-insecure-requests":"1",
+                      "sec-fetch-site":"none",
+                      "sec-fetch-mode":"navigate",
+                      "sec-fetch-user":"?1",
+                      "sec-fetch-dest":"document"}
+            for i in range(limit):
+                   stt+=1
+                   post = ses.post(f"https://graph.facebook.com/v13.0/me/feed?link=https://www.facebook.com/{uid}&published=0&access_token={token}",headers=header, cookies=cookie).json()
+                   if "id" in post:
+                           delay = 0
+                           sys.stdout.write(f"\r>> sucess  : {stt}/{limit} ");sys.stdout.flush()
+                           time.sleep(0.001)
+                   else:
+                           break
+        except:
+            print("gagal membagikan, kemungkinan token invalid");menu()
+
+if __name__=='__main__':
+        cek_pw()
+        #cek_pw()
