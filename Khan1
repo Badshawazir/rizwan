@@ -1,4 +1,4 @@
-# Author by HikmatXD
+# Author by Wazir Khan
 # Jangan Keras Merecode Script Kami!!! 
 # https://github.com/Badshawazir
 # Jangan lupa follow github saya:)
@@ -253,12 +253,13 @@ def tahun(fx):
 def banner():
 	os.system("clear")
 	print(f"""
-\t   _____      _____   __________ ___________
-\t  /  _  \    /     \  \______   \\_   _____/
-\t /  /_\  \  /  \ /  \  |    |  _/ |    __)  
-\t/    |    \/    Y    \ |    |   \ |     \   
-\t\____|__  /\____|__  / |______  / \___  /   
-\t        \/         \/         \/      \/ • Arona Multi Brute Force •
+#    #                      
+#   #  #    #   ##   #    # 
+#  #   #    #  #  #  ##   # 
+###    ###### #    # # #  # 
+#  #   #    # ###### #  # # 
+#   #  #    # #    # #   ## 
+#    # #    # #    # #    #  • Arona Multi Brute Force •
 \t\t{garis} author by {K}Rizwankhan
 """)
 
