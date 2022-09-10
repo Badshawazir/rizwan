@@ -1,12 +1,12 @@
-# Author by Wazir Khan
+# Author by Rizwan Khan
 # Jangan Keras Merecode Script Kami!!! 
 # https://github.com/Badshawazir
 # Jangan lupa follow github saya:)
      
-     # Corporation Arona Multi Brute Force
+     # Corporation FB Multi Brute Force
      # Tricker Not Hacker
-     # Fb : Rizwan Khan.
-     # Whastapp : 00923345478919
+     # Fb : Rizwan Wazir.
+     # Whastapp : +923345478919
 
 # Grup Whastapp Admin : https://chat.whatsapp.com/DvXb23TbzQ1CfDvXwr2ifj
 # Script Ini 100% Open Source Code:) 
@@ -259,8 +259,8 @@ def banner():
 ###    ###### #    # # #  # 
 #  #   #    # ###### #  # # 
 #   #  #    # #    # #   ## 
-#    # #    # #    # #    #  • Arona Multi Brute Force •
-\t\t{garis} author by {K}Rizwankhan
+#    # #    # #    # #    #  • FB Multi Brute Force •
+\t\t{garis} author by {K}RizwanWazir
 """)
 
 def cek_expired_script():
@@ -329,7 +329,7 @@ def login():
 	cukuf = input(f" {P}[{warna_warni_biasa}•{P}] pilih : {H}")
 	if cukuf in ["help","Help","HELP"]:
 		print("")
-		x=f"{P2}whatsapp admin *--> {H2}00923345478919 {P2}harap chat klo ada kepentingan yang mau disampaikan ke author ambf\nini klo gak bisa diarahin ke whastapp admin yakk"
+		x=f"{P2}whatsapp admin *--> {H2}+923345478919 {P2}harap chat klo ada kepentingan yang mau disampaikan ke author ambf\nini klo gak bisa diarahin ke whastapp admin yakk"
 		vprint(panel(x,style=f"{warna_warni_rich_cerah}"))
 		print("")
 		x=f"{P2}sedang diarahkan ke whastapp author"
